@@ -1,60 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
-  <!-- <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script> -->
-  <!-- <script src="./lib/aframe-physics-system.js"></script> -->
-  <title>AFrame</title>
-</head>
-<body>
-  <a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
-    <!-- Camera -->
-    <a-entity camera look-controls position="0 1.6 2.5">
-      <a-text id="txt" value="+" position="0 0 -0.5" scale="0.125 0.125 0.125"
-      align="center" color="#000000"></a-text>
-      <a-text id="ctlStatus" value="Status" position="0 -0.125 -0.5" scale="0.125 0.125 0.125"
-      align="center" color="#555555"></a-text>
-    </a-entity>
-    <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
-    <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
-  
-    <a-box position="-1 0.5 0" rotation="500.00000000000006 45 0" rotation="0 45 0" color="#4CC3D9"></a-box>
-    <!-- <a-sphere position="0 1.25 0" radius="0.5" color="#EF2D5E"></a-sphere> -->
-    <a-cylinder position="1 0.75 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-    <!-- Ceilings and Walls -->
-    <!-- TB -->
-    <a-plane position="0 10 0" rotation="90 0 0" width="10" height="10" color="#7BC8A4" id="top"></a-plane>
-    <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4" id="bottom"></a-plane>
-    <!-- FB -->
-    <a-plane position="0 5 -5" rotation="0 0 0" width="10" height="10" color="#7BC8A4" id="forward"></a-plane>
-    <a-plane position="0 5 5" rotation="-180 0 0" width="10" height="10" color="#7BC8A4" id="back"></a-plane>
-    <!-- LR -->
-    <a-plane position="-5 5 0" rotation="0 90 0" width="10" height="10" color="#7BC8A4" id="left"></a-plane>
-    <a-plane position="5 5 0" rotation="0 -90 0" width="10" height="10" color="#7BC8A4" id="right"></a-plane>
-  
-    <a-sky color="#92e5ec"></a-sky>
-    
-  </a-scene>
-  <script>
-    // トリガーを押した時
-    ctlL.addEventListener('triggerdown', function (event) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+    <!-- <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script> -->
+    <!-- <script src="./lib/aframe-physics-system.js"></script> -->
+    <title>AFrame</title>
+  </head>
+  <body>
+    <a-scene physics="driver: ammo; debug: true; debugDrawMode: 1;">
+      <!-- Camera -->
+      <a-entity camera look-controls position="0 1.6 2.5">
+        <a-text
+          id="txt"
+          value="+"
+          position="0 0 -0.5"
+          scale="0.125 0.125 0.125"
+          align="center"
+          color="#000000"
+        ></a-text>
+        <a-text
+          id="ctlStatus"
+          value="Status"
+          position="0 -0.125 -0.5"
+          scale="0.125 0.125 0.125"
+          align="center"
+          color="#555555"
+        ></a-text>
+      </a-entity>
+      <a-entity id="ctlL" laser-controls="hand: left"></a-entity>
+      <a-entity id="ctlR" laser-controls="hand: right"></a-entity>
+
+      <a-box
+        position="-1 0.5 0"
+        rotation="500.00000000000006 45 0"
+        rotation="0 45 0"
+        color="#4CC3D9"
+      ></a-box>
+      <!-- <a-sphere position="0 1.25 0" radius="0.5" color="#EF2D5E"></a-sphere> -->
+      <a-cylinder
+        position="1 0.75 0"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+      ></a-cylinder>
+      <!-- Ceilings and Walls -->
+      <!-- TB -->
+      <a-plane
+        position="0 10 0"
+        rotation="90 0 0"
+        width="10"
+        height="10"
+        color="#7BC8A4"
+        id="top"
+      ></a-plane>
+      <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="10"
+        height="10"
+        color="#7BC8A4"
+        id="bottom"
+      ></a-plane>
+      <!-- FB -->
+      <a-plane
+        position="0 5 -5"
+        rotation="0 0 0"
+        width="10"
+        height="10"
+        color="#7BC8A4"
+        id="forward"
+      ></a-plane>
+      <a-plane
+        position="0 5 5"
+        rotation="-180 0 0"
+        width="10"
+        height="10"
+        color="#7BC8A4"
+        id="back"
+      ></a-plane>
+      <!-- LR -->
+      <a-plane
+        position="-5 5 0"
+        rotation="0 90 0"
+        width="10"
+        height="10"
+        color="#7BC8A4"
+        id="left"
+      ></a-plane>
+      <a-plane
+        position="5 5 0"
+        rotation="0 -90 0"
+        width="10"
+        height="10"
+        color="#7BC8A4"
+        id="right"
+      ></a-plane>
+
+      <a-sky color="#92e5ec"></a-sky>
+    </a-scene>
+    <script>
+      // トリガーを押した時
+      ctlL.addEventListener("triggerdown", function (event) {
         ctlStatus.setAttribute("value", "Left trigger down");
-     });
-     ctlR.addEventListener('triggerdown', function (event) {
+      });
+      ctlR.addEventListener("triggerdown", function (event) {
         ctlStatus.setAttribute("value", "Right trigger down");
-     });
-     
-     // トリガーを離した時
-     ctlL.addEventListener('triggerup', function (event) {
+      });
+
+      // トリガーを離した時
+      ctlL.addEventListener("triggerup", function (event) {
         ctlStatus.setAttribute("value", "Left trigger up");
-     });
-     ctlR.addEventListener('triggerup', function (event) {
+      });
+      ctlR.addEventListener("triggerup", function (event) {
         ctlStatus.setAttribute("value", "Right trigger up");
-     });
-  </script>
-</body>
+      });
+    </script>
+  </body>
 </html>
