@@ -1,5 +1,9 @@
 # nodejs
 node_modules
 
+# build
+dist/*
+!dist/index.html
+
 # misc
 .DS_Store
